@@ -31,8 +31,14 @@ export default function Profile() {
         history.push('/');
     }
 
+    function handleRedirect() {
+        if (localStorage.ongId == null ) {
+            history.push('/');
+        }
+    }
+
     return (
-        <div className="profile-container">
+        <div onLoad={handleRedirect} className="profile-container">
             <header>
                 <img src={logoImg} alt="NGOs connection" />
                 <span>Welcome, {ongName}</span>
@@ -46,6 +52,7 @@ export default function Profile() {
 
             <ul>
                 {incidents.map(incident => {
+                    console.log(incident);
                     return (
                         <li key={incident.id}>
                             <strong>CASE:</strong>

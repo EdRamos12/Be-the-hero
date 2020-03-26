@@ -15,7 +15,7 @@ export default function NewIncident() {
         e.preventDefault();
         const data = {title,description,value};
         try {
-            const response = await api.post('incidents', data, {headers: {Authorization: ongId}});
+            await api.post('incidents', data, {headers: {Authorization: ongId}});
             history.push('/profile');
         } catch (err) {
             alert('Error trying to register case, see console for details.');

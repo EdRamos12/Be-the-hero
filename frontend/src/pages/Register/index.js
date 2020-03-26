@@ -19,12 +19,17 @@ export default function Register() {
         const data = {name,email,whatsapp,city,uf};
         try {
             const response = await api.post('ongs', data);
-            alert('Your account was made successfully! ID: '+response.data.id);
+            const ID = response.data.id;
+            const NGO_NAME = response.data.name;
+            alert('Your account was made successfully! \nID: '+ID+' \nLogin Name: '+NGO_NAME);
+            localStorage.setItem('ongId', ID);
+            localStorage.setItem('ongName', NGO_NAME);
+            history.push('/');
         } catch (err) {
             alert('Erro no cadastro. ERR: '+err);
         }
-        history.push('/');
     }
+
     return (
         <div className="register-container">
             <div className="content">
